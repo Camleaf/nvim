@@ -6,6 +6,7 @@ vim.cmd [[set noexpandtab]]
 vim.cmd [[set tabstop=4]]
 vim.cmd [[set shiftwidth=4]]
 vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[set keymodel=startsel,stopsel]]
 -- Enable line numbers  
 vim.wo.number = true
 
@@ -26,7 +27,7 @@ vim.keymap.set('n','<C-s>', ':w<CR>',{noremap=true})
 vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
 
 -- Selection shortcuts    Todo: set conditionally sing the whole function notation
-require('custom.arrows').load()
+
 ---- Neotree shortcuts
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 
