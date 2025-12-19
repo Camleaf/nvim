@@ -1,5 +1,8 @@
 local module = {}
 
+local function exitSelect()
+	return '<ESC>i'
+end	
 
 function module.load() 
 
@@ -37,8 +40,11 @@ function module.load()
 		end
 	end, {expr= true, remap=true})
 
-
-
+	-- Remove select if shift not pressed. Add check if Shift pressed
+	vim.keymap.set({'v'},'<left>',exitSelect(),{remap=true})
+	vim.keymap.set({'v'},'<right>',exitSelect(),{remap=true})
+	vim.keymap.set({'v'},'<up>',exitSelect(),{remap=true})
+	vim.keymap.set({'v'},'<down>',exitSelect(),{remap=true})
 
 end
 
