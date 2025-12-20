@@ -30,3 +30,6 @@ vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
+
+-- Load custom shortucts
+require('custom.git').load() -- Neogit shortcuts
