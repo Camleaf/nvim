@@ -12,7 +12,7 @@ function module.load()
 			-- add like commit and push and stuff to otherwise
 			vim.cmd(':Neogit')
 		end,
-	{nargs=?})
+	{nargs="?"})
 
 	--vim.keymap.set("c","Git<CR>",":Neogit<CR>",{remap=true})	
 end

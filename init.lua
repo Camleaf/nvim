@@ -5,20 +5,24 @@
 
 require("config.lazy")
 
----- Colourscheme tokyonight by folke
+-- Tabs appearance
 vim.cmd [[set autoindent]]
-vim.cmd [[set noexpandtab]]
+vim.cmd [[set expandtab]]
 vim.cmd [[set tabstop=4]]
 vim.cmd [[set shiftwidth=4]]
+
+---- Colourscheme tokyonight by folke
 vim.cmd [[colorscheme tokyonight]]
-vim.cmd [[set keymodel=startsel,stopsel]] -- For the default windows selection stuff
+
+-- For the default windows selection stuff
 
 -- Enable line numbers  
 vim.wo.number = true
 
 ---- General vim
-vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
-
+vim.cmd [[set clipboard +=unnamed]]
+vim.cmd [[set clipboard +=unnamedplus]]
+vim.cmd [[set keymodel=startsel,stopsel]] 
 
 ---- In-Editor shortcuts
 -- General file shortcuts
@@ -28,8 +32,29 @@ vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
 
 ---- Neotree shortcuts
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
-
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 
 -- Load custom shortucts
-require('custom.git').load() -- Neogit shortcuts
+require('custom.git').load()-- Neogit shortcuts
+
+
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+  virtual_text = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = true,
+    style = "minimal",
+    border = "rounded",
+    source = true,
+  },
+}
