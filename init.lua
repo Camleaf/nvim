@@ -22,8 +22,7 @@ vim.wo.number = true
 ---- General vim
 vim.cmd [[set clipboard +=unnamed]]
 vim.cmd [[set clipboard +=unnamedplus]]
-vim.cmd [[set keymodel=startsel,stopsel]] 
-
+vim.cmd [[set keymodel=startsel,stopsel]]
 ---- In-Editor shortcuts
 -- General file shortcuts
 
@@ -37,24 +36,3 @@ vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 -- Load custom shortucts
 require('custom.git').load()-- Neogit shortcuts
 
-
-vim.diagnostic.config {
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.HINT] = "",
-      [vim.diagnostic.severity.INFO] = "",
-    },
-  },
-  virtual_text = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = true,
-    style = "minimal",
-    border = "rounded",
-    source = true,
-  },
-}
