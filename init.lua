@@ -36,3 +36,21 @@ vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 -- Load custom shortucts
 require('custom.git').load()-- Neogit shortcuts
 
+
+-- Show full diagnostics
+
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '●',
+        source = 'always',
+    },
+    severity_sort = true,
+})
+
+
+-- Add vim context to lua
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }}}}})
