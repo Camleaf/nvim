@@ -18,7 +18,6 @@ vim.cmd [[colorscheme tokyonight]]
 
 -- Enable line numbers  
 vim.wo.number = true
-
 ---- General vim
 vim.cmd [[set clipboard +=unnamed]]
 vim.cmd [[set clipboard +=unnamedplus]]
@@ -46,7 +45,6 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-
 -- Add vim context to lua
 vim.lsp.config("lua_ls", {
     settings = {
@@ -61,25 +59,11 @@ require('nvim-treesitter').setup({
  auto_install = true,
 
 })
---treesitter
---[[
-require('nvim-treesitter').install({
-        "python",
-        "bash",
-        "css",
-        "html",
-        "javascript",
-        "lua",
-        "java",
-        "markdown",
-        "typescript",
-        "yaml",
-        "c",
-        "cpp",
-        "vim",
- }):wait(30000) -- wait max 5min
---]]
+-- treesitter install. Enable only on first run or when adding a new parser, or updating parsers
 
+--require('nvim-treesitter').install(require("custom.languages").getParserNames()):wait(30000) -- wait max 5min
+
+-- treesitter activation for each file
 vim.api.nvim_create_autocmd('FileType', {
   pattern = require("custom.languages").getParserNames(),
   callback = function() vim.treesitter.start() end,

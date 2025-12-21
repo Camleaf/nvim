@@ -16,6 +16,7 @@ function module.getParserNames()
         "c",
         "cpp",
         "vim",
+        "tsx",
     }
 end
 
