@@ -4,6 +4,7 @@ local module = {}
 function module.getParserNames()
     return {
         "python",
+        "tsx",
         "bash",
         "css",
         "html",
@@ -15,8 +16,7 @@ function module.getParserNames()
         "yaml",
         "c",
         "cpp",
-        "vim",
-        "tsx",
+        "vim"
     }
 end
 
