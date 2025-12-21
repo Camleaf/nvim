@@ -36,7 +36,6 @@ vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 -- Load custom shortucts
 require('custom.git').load()-- Neogit shortcuts
 
-
 -- Show full diagnostics
 
 vim.diagnostic.config({
@@ -54,3 +53,35 @@ vim.lsp.config("lua_ls", {
         Lua = {
             diagnostics = {
                 globals = { "vim" }}}}})
+
+
+require('nvim-treesitter').setup({
+  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+  ensure_installed = require("custom.languages").getParserNames(),
+ auto_install = true,
+
+})
+--treesitter
+--[[
+require('nvim-treesitter').install({
+        "python",
+        "bash",
+        "css",
+        "html",
+        "javascript",
+        "lua",
+        "java",
+        "markdown",
+        "typescript",
+        "yaml",
+        "c",
+        "cpp",
+        "vim",
+ }):wait(30000) -- wait max 5min
+--]]
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = require("custom.languages").getParserNames(),
+  callback = function() vim.treesitter.start() end,
+})
+

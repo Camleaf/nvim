@@ -1,9 +1,7 @@
 return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-        ensure_installed = {
-            "lua_ls", "jtdls", "basedpyright","cpplint","denols","html"
-        },
+        ensure_installed = require("custom.languages").getLspNames()
     },
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
