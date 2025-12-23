@@ -1,6 +1,5 @@
 --[[
 -- Using Mason for LSPs / Linters and other
-
 --]]
 
 require("config.lazy")
@@ -68,4 +67,3 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = require("custom.languages").getParserNames(),
   callback = function() vim.treesitter.start() end,
 })
-
