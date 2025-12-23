@@ -20,6 +20,9 @@ vim.wo.number = true
 ---- General vim
 vim.cmd [[set clipboard +=unnamed]]
 vim.cmd [[set clipboard +=unnamedplus]]
+
+
+
 vim.cmd [[set keymodel=startsel,stopsel]]
 ---- In-Editor shortcuts
 -- General file shortcuts
@@ -67,3 +70,11 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = require("custom.languages").getParserNames(),
   callback = function() vim.treesitter.start() end,
 })
+
+
+
+-- Load WSL-specific options
+if vim.fn.has('wsl') == 1 then
+    require('custom.wslSetup').load()
+end
+
