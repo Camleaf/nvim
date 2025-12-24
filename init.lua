@@ -61,9 +61,9 @@ require('nvim-treesitter').setup({
  auto_install = true,
 
 })
--- treesitter install. Enable only on first run or when adding a new parser, or updating parsers
+-- treesitter parsers install.
 
---require('nvim-treesitter').install(require("custom.languages").getParserNames()):wait(30000) -- wait max 5min
+require('nvim-treesitter').install(require("custom.languages").getParserNames()):wait(30000) -- wait max 5min
 
 -- treesitter activation for each file
 vim.api.nvim_create_autocmd('FileType', {
