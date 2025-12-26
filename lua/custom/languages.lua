@@ -22,7 +22,7 @@ end
 
 function module.getLspNames()
     return {
-     "lua_ls", "jtdls", "basedpyright","cpplint","ts_ls","html","tailwindcss"
+     "lua_ls", "eclipse.jdt.ls", "basedpyright","ts_ls","html","tailwindcss"
     }
 end
 
