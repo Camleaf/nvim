@@ -29,6 +29,7 @@ vim.cmd [[set keymodel=startsel,stopsel]]
 
 vim.keymap.set('n','<C-s>', ':w<CR>',{noremap=true})
 vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
+vim.keymap.set('t','<ESC>', '<C-\\><C-n>')
 
 ---- Neotree shortcuts
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
