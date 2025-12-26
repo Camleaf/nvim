@@ -20,7 +20,7 @@ vim.wo.number = true
 ---- General vim
 vim.cmd [[set clipboard +=unnamed]]
 vim.cmd [[set clipboard +=unnamedplus]]
-
+vim.o.signcolumn = "yes"
 
 
 vim.cmd [[set keymodel=startsel,stopsel]]
