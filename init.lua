@@ -36,8 +36,8 @@ vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 
 -- Load custom shortucts
-require('custom.git').load()-- Neogit shortcuts
-
+require('user.git').load()-- Neogit shortcuts
+require('user.term').load() -- Toggle-term shortcuts
 -- Show full diagnostics
 
 vim.diagnostic.config({
@@ -62,17 +62,17 @@ vim.lsp.config('jdtls', {
 --setup treesitter
 require('nvim-treesitter').setup({
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-  ensure_installed = require("custom.languages").getParserNames(),
+  ensure_installed = require("user.languages").getParserNames(),
  auto_install = true,
 
 })
 -- treesitter parsers install.
 
-require('nvim-treesitter').install(require("custom.languages").getParserNames()):wait(30000) -- wait max 5min
+require('nvim-treesitter').install(require("user.languages").getParserNames()):wait(30000) -- wait max 5min
 
 -- treesitter activation for each file
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = require("custom.languages").getParserNames(),
+  pattern = require("user.languages").getParserNames(),
   callback = function() vim.treesitter.start() end,
 })
 
@@ -80,6 +80,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Load WSL-specific options
 if vim.fn.has('wsl') == 1 then
-    require('custom.wslSetup').load()
+    require('user.wslSetup').load()
 end
 
