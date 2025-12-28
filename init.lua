@@ -56,7 +56,7 @@ vim.lsp.config("lua_ls", {
                 globals = { "vim" }}}}})
 -- Fix java root dir
 vim.lsp.config('jdtls', {
-    root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
+    root_dir = vim.fs.root(0, {'gradlew', '.git','.project','mvnw'}),
 })
 
 --setup treesitter
@@ -82,4 +82,5 @@ vim.api.nvim_create_autocmd('FileType', {
 if vim.fn.has('wsl') == 1 then
     require('user.wslSetup').load()
 end
+
 
