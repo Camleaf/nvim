@@ -25,7 +25,7 @@ function M:setup()
 
         -- `root_dir` must point to the root of your project.
         -- See `:help vim.fs.root`
-        root_dir = vim.fs.root(0, { 'gradlew','.project', '.git', 'mvnw' }),
+        root_dir = vim.fs.root(0, { 'gradlew','.project','.classpath', '.git', 'mvnw' }),
 
 
         -- Here you can configure eclipse.jdt.ls specific settings
