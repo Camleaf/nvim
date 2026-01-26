@@ -54,6 +54,15 @@ vim.lsp.config("lua_ls", {
         Lua = {
             diagnostics = {
                 globals = { "vim" }}}}})
+
+vim.lsp.config("arduino_language_server",{
+    cmd = {
+        "arduino-language-server",
+        "-cli-config", "/home/bdaac/.arduino15/arduino-cli.yaml",
+        "-cli", "/home/bdaac/bin/arduino-cli",
+    }
+})
+
 -- Fix java root dir
 vim.lsp.config('jdtls', {
     root_dir = vim.fs.root(0, {'gradlew', '.git','.project','mvnw'}),
