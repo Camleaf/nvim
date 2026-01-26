@@ -84,3 +84,10 @@ if vim.fn.has('wsl') == 1 then
 end
 
 
+vim.api.nvim_create_user_command('Lwipe', -- Wipes all lsp buffers 
+    function(opts) 
+        vim.lsp.stop_client(vim.lsp.get_active_clients())
+    end,
+{nargs="?"})
+
+
