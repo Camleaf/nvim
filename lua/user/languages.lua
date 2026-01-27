@@ -22,7 +22,8 @@ end
 
 function module.getLspNames()
     return {
-     "lua_ls", "cssls", "eclipse.jdt.ls", "basedpyright","ts_ls","html","tailwindcss", 'clangd', 'neocmake', 'arduino_language_server'
+     "lua_ls", "cssls", "eclipse.jdt.ls", "basedpyright","ts_ls","html","tailwindcss", 'clangd', 'neocmake', 'arduino_language_server',
+     "bashls", "gradle_ls"
     }
 end
 
