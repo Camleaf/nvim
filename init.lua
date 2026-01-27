@@ -4,6 +4,14 @@
 
 require("config.lazy")
 
+-- Load WSL-specific options
+Name = vim.fn.expand("$USER")
+
+if vim.fn.has('wsl') == 1 then
+    require('user.wslSetup').load()
+end
+
+
 -- Tabs appearance
 vim.cmd [[set autoindent]]
 vim.cmd [[set expandtab]]
@@ -36,8 +44,9 @@ vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 
 -- Load custom shortucts
-require('user.git').load()-- Neogit shortcuts
-require('user.term').load() -- Toggle-term shortcuts
+require('user.git').load()
+require('user.term').load()
+require('user.lspSetup').load()
 -- Show full diagnostics
 
 vim.diagnostic.config({
@@ -47,51 +56,6 @@ vim.diagnostic.config({
     },
     severity_sort = true,
 })
-
--- Add vim context to lua
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" }}}}})
-
-vim.lsp.config("arduino_language_server",{
-    cmd = {
-        "arduino-language-server",
-        "-cli-config", "/home/bdaac/.arduino15/arduino-cli.yaml",
-        "-cli", "/home/bdaac/bin/arduino-cli",
-    }
-})
-
--- Fix java root dir
-vim.lsp.config('jdtls', {
-    root_dir = vim.fs.root(0, {'gradlew', '.git','.project','mvnw'}),
-})
-
---setup treesitter
-require('nvim-treesitter').setup({
-  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-  ensure_installed = require("user.languages").getParserNames(),
- auto_install = true,
-
-})
--- treesitter parsers install.
-
-require('nvim-treesitter').install(require("user.languages").getParserNames()):wait(30000) -- wait max 5min
-
--- treesitter activation for each file
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = require("user.languages").getParserNames(),
-  callback = function() vim.treesitter.start() end,
-})
-
-
-
--- Load WSL-specific options
-if vim.fn.has('wsl') == 1 then
-    require('user.wslSetup').load()
-end
-
 
 vim.api.nvim_create_user_command('Lwipe', -- Wipes all lsp buffers 
     function(opts) 
