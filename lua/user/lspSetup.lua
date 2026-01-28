@@ -41,6 +41,15 @@ function module.load()
       callback = function() vim.treesitter.start() end,
     })
 
+    vim.lsp.config("clangd",{
+        root_dir=function()
+            if vim.fs.root(0,{"sdkconfig"}) ~= nil then return nil end
+            return vim.fs.root(0,{".clangd","CMakeLists.txt",".git"})
+        end
+    })
+
+    
+    require('user.esp-clangd').load()
 
 end
 
