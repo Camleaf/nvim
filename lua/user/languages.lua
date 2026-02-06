@@ -3,6 +3,7 @@ local module = {}
 
 function module.getParserNames()
     return {
+        "arduino",
         "python",
         "tsx",
         "bash",
