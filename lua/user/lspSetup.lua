@@ -1,6 +1,12 @@
 local module = {}
 
 function module.load()
+    
+    require("mason-lspconfig").setup {
+        ensure_installed = require("configs."..CONFIG..".languages").getLspNames(),
+        automatic_enable = require("configs."..CONFIG..".languages").getLspNames()
+    }
+
 
     -- Add vim context to lua
     vim.lsp.config("lua_ls", {

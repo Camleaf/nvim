@@ -9,10 +9,6 @@ return {
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = require("configs."..CONFIG..".languages").getLspNames(),
-        },
-    },
-    {'mfussenegger/nvim-jdtls'}
-
+        opts = {},
+    }, 
 }

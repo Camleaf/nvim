@@ -13,7 +13,7 @@ function module.getParserNames()
 end
 function module.getLspNames()
     return {
-     "lua_ls", "eclipse.jdt.ls",
+     "lua_ls", "jdtls",
      "bashls", "gradle_ls"
     }
 end

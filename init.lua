@@ -1,11 +1,12 @@
 --[[
 -- Using Mason for LSPs / Linters and other
 --]]
-Name = vim.fn.expand("$USER")
-CONFIG = "java"
 
+CONFIG = "java"
+Name = vim.fn.expand("$USER")
 
 require("config.lazy")
+
 
 if vim.fn.has('wsl') == 1 then
     require('user.wslSetup').load()
@@ -44,6 +45,7 @@ vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 
 -- Load custom shortucts
+require('user.config').load()
 require('user.git').load()
 require('user.term').load()
 require('user.lspSetup').load()
