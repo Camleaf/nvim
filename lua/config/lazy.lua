@@ -21,11 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
+-- Setup lazy.nvim1
 require("lazy").setup({
   spec = {
-    -- import your plugins
     { import = "plugin" },
+    { import = "configs."..CONFIG..".plugin"}
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

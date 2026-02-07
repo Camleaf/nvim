@@ -1,11 +1,11 @@
 --[[
 -- Using Mason for LSPs / Linters and other
 --]]
+Name = vim.fn.expand("$USER")
+CONFIG = "java"
+
 
 require("config.lazy")
-
--- Load WSL-specific options
-Name = vim.fn.expand("$USER")
 
 if vim.fn.has('wsl') == 1 then
     require('user.wslSetup').load()
@@ -56,11 +56,3 @@ vim.diagnostic.config({
     },
     severity_sort = true,
 })
-
-vim.api.nvim_create_user_command('Lwipe', -- Wipes all lsp buffers 
-    function(opts) 
-        vim.lsp.stop_client(vim.lsp.get_active_clients())
-    end,
-{nargs="?"})
-
-
