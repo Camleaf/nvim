@@ -1,9 +1,14 @@
 --[[
 -- Using Mason for LSPs / Linters and other
 --]]
-if CONFIG == nil then
-    CONFIG = "java"
+
+CONFIG = "java"
+local file = io.open("activeconfig", "r")
+if file ~= nil then
+    CONFIG = file:read("*a")
+    file:close()
 end
+
 
 Name = vim.fn.expand("$USER")
 
@@ -61,3 +66,7 @@ vim.diagnostic.config({
     },
     severity_sort = true,
 })
+
+
+print("Configuration \'"..CONFIG.."\' loaded")
+vim.cmd(":messages")

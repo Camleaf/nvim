@@ -25,7 +25,12 @@ function module.load()
             end
 
             CONFIG = opts.args
-            
+            local file = io.open("activeconfig", "w")
+            if file ~= nil then
+                file:write(CONFIG)
+                file:close()
+            end
+
             vim.cmd(':cq')
         end,
 
