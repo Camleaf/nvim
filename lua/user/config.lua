@@ -10,10 +10,34 @@ local configs = {"arduino", "esp32", "java", "py-c", "webdev"}
 
 local lfuncs = require("user.luafuncs")
 
+
+
+
+
+
+
+
 function module.load()
 	vim.api.nvim_create_user_command('Config',
 		function(opts)
-			-- add like commit and push and stuff to otherwise
+
+            -- edge cases
+            if opts.args == "" then
+                print("Current configuration is \'"..CONFIG.."\'")
+                return
+            end
+
+
+            if opts.args == "all" then
+
+                local outString = "All available configurations:"
+                for _,val in ipairs(configs) do outString = outString .."\n".. val end
+                print(outString)
+                return
+            end
+
+
+            -- Main function stuff
 			if CONFIG == opts.args then
                 print("Configuration \'"..CONFIG.."\' already enabled")
                 return
@@ -34,7 +58,9 @@ function module.load()
             vim.cmd(':cq')
         end,
 
-	{nargs=1, desc="Changes loaded language config"})
+	{nargs="?", desc="Changes loaded language config"})
+
+
 
 end
 return module
