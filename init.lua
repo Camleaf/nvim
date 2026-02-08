@@ -1,8 +1,10 @@
 --[[
 -- Using Mason for LSPs / Linters and other
 --]]
+if CONFIG == nil then
+    CONFIG = "java"
+end
 
-CONFIG = "java"
 Name = vim.fn.expand("$USER")
 
 require("config.lazy")
@@ -39,6 +41,7 @@ vim.cmd [[set keymodel=startsel,stopsel]]
 vim.keymap.set('n','<C-s>', ':w<CR>',{noremap=true})
 vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
 vim.keymap.set('t','<ESC>', '<C-\\><C-n>')
+vim.keymap.set('n', 'rr', ':cq<CR>', { noremap = true, silent = true })
 
 ---- Neotree shortcuts
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
