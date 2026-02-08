@@ -2,10 +2,18 @@
 -- Using Mason for LSPs / Linters and other
 --]]
 
+CONFIG = "java"
+local file = io.open("activeconfig", "r")
+if file ~= nil then
+    CONFIG = file:read("*a")
+    file:close()
+end
+
+
+Name = vim.fn.expand("$USER")
+
 require("config.lazy")
 
--- Load WSL-specific options
-Name = vim.fn.expand("$USER")
 
 if vim.fn.has('wsl') == 1 then
     require('user.wslSetup').load()
@@ -38,12 +46,14 @@ vim.cmd [[set keymodel=startsel,stopsel]]
 vim.keymap.set('n','<C-s>', ':w<CR>',{noremap=true})
 vim.keymap.set('i','<C-s>', '<ESC>:w<CR>i<right>',{remap=true})
 vim.keymap.set('t','<ESC>', '<C-\\><C-n>')
+vim.keymap.set('n', 'rr', ':cq<CR>', { noremap = true, silent = true })
 
 ---- Neotree shortcuts
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 vim.keymap.set('n','<A-f>',':Neotree reveal<CR> :Neotree focus<CR>',{})
 
 -- Load custom shortucts
+require('user.config').load()
 require('user.git').load()
 require('user.term').load()
 require('user.lspSetup').load()
@@ -57,10 +67,6 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-vim.api.nvim_create_user_command('Lwipe', -- Wipes all lsp buffers 
-    function(opts) 
-        vim.lsp.stop_client(vim.lsp.get_active_clients())
-    end,
-{nargs="?"})
 
-
+print("Configuration \'"..CONFIG.."\' loaded")
+vim.cmd(":messages")

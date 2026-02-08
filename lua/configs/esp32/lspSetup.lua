@@ -1,7 +1,7 @@
-local m = {}
+local module = {}
 
-function m.load()
-    -- Setup the ESP Clang LSP as its own server
+function module.load()
+    
     local clangd_path = "~/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd"
     if clangd_path then
         vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
@@ -22,5 +22,9 @@ function m.load()
     else
         vim.notify("ESP Clang LSP not configured: missing clangd executable", vim.log.levels.WARN)
     end
+
+
 end
-return m
+
+
+return module

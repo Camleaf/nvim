@@ -1,9 +1,9 @@
+
 local module = {}
 
 
 function module.getParserNames()
     return {
-        "arduino",
         "python",
         "tsx",
         "bash",
@@ -11,22 +11,17 @@ function module.getParserNames()
         "html",
         "javascript",
         "lua",
-        "java",
         "markdown",
         "typescript",
         "yaml",
-        "c",
-        "cpp",
-        "vim"
     }
 end
 
 function module.getLspNames()
     return {
-     "lua_ls", "cssls", "eclipse.jdt.ls", "basedpyright","ts_ls","html","tailwindcss", 'clangd', 'neocmake', 'arduino_language_server',
-     "bashls", "gradle_ls"
+     "lua_ls", "cssls", "basedpyright", "ts_ls","html","tailwindcss",
+     "bashls"
     }
 end
-
 
 return module
