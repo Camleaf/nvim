@@ -49,7 +49,7 @@ function module.load()
             end
 
             CONFIG = opts.args
-            local file = io.open("activeconfig", "w")
+            local file = io.open(vim.fn.expand("~").."/.config/nvim/activeconfig", "w")
             if file ~= nil then
                 file:write(CONFIG)
                 file:close()

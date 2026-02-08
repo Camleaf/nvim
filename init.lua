@@ -3,7 +3,7 @@
 --]]
 
 CONFIG = "java"
-local file = io.open("activeconfig", "r")
+local file = io.open(vim.fn.expand("~").."/.config/nvim/activeconfig", "r")
 if file ~= nil then
     CONFIG = file:read("*a")
     file:close()
@@ -12,7 +12,7 @@ end
 
 Name = vim.fn.expand("$USER")
 
-require("config.lazy")
+require("lazy.lazy")
 
 
 if vim.fn.has('wsl') == 1 then
