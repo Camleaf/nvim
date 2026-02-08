@@ -7,7 +7,7 @@ function module.load()
             "arduino-language-server",
             "-cli-config", string.format("/home/%s/.arduino15/arduino-cli.yaml",Name),
             "-cli", vim.fn.exepath('arduino-cli'),
-            '-clangd', vim.fn.exepath("clangd"),
+            '-clangd', "~/.config/nvim/lua/configs/arduino/clangd-esp.sh",
             '-fqbn', "esp32:esp32:esp32"
         }
     })
