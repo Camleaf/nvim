@@ -23,5 +23,5 @@ Index:
 
 also use this to build and generate compile commands as you go:
 ```
-arduino-cli compile --fqbn esp32:esp32:esp32 --build-path ./build
+arduino-cli compile --fqbn <board-fqbn> --build-path ./build
 ```
