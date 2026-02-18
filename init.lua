@@ -9,7 +9,6 @@ if file ~= nil then
     file:close()
 end
 
-
 Name = vim.fn.expand("$USER")
 
 require("lazy.lazy")
@@ -67,6 +66,8 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
+
+vim.lsp.log.set_level(vim.log.levels.ERROR)
 
 print("Configuration \'"..CONFIG.."\' loaded")
 vim.cmd(":messages")
