@@ -17,6 +17,21 @@ function module.getParserNames()
     }
 end
 
+function module.getFileTypes()
+    return {
+        "python",
+        "typescriptreact",
+        "bash",
+        "css",
+        "html",
+        "javascript",
+        "lua",
+        "markdown",
+        "typescript",
+        "yaml",
+    }
+end
+
 function module.getLspNames()
     return {
      "lua_ls", "cssls", "basedpyright", "ts_ls","html","tailwindcss",

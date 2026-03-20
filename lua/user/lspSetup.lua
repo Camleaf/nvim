@@ -16,8 +16,12 @@ function module.load()
     --setup treesitter
     require('nvim-treesitter').setup({
       -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-      ensure_installed = require("configs."..CONFIG..".languages").getParserNames(),
-     auto_install = true,
+        ensure_installed = require("configs."..CONFIG..".languages").getParserNames(),
+        auto_install = true,
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false
+        }
 
     })
     -- treesitter parsers install.
@@ -26,8 +30,10 @@ function module.load()
 
     -- treesitter activation for each file
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = require("configs."..CONFIG..".languages").getParserNames(),
-      callback = function() vim.treesitter.start() end,
+      pattern = require("configs."..CONFIG..".languages").getFileTypes(),
+      callback = function()
+          vim.treesitter.start() 
+      end,
     })
     
 

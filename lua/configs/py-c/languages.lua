@@ -14,6 +14,10 @@ function module.getParserNames()
     }
 end
 
+function module.getFileTypes()
+    return module.getParserNames()
+end
+
 function module.getLspNames()
     return {
      "lua_ls", "basedpyright", 'clangd', 'neocmake',
