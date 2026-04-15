@@ -21,7 +21,7 @@ end
 function module.getLspNames()
     return {
      "lua_ls", "basedpyright", 'clangd', 'neocmake',
-     "bashls",
+     "bashls", "json"
     }
 end
 
