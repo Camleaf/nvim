@@ -19,7 +19,7 @@ end
 
 function module.getLspNames()
     return {
-     "lua_ls", "jdtls", "json",
+     "lua_ls", "jdtls", "jsonls",
      "bashls", "gradle_ls"
     }
 end
