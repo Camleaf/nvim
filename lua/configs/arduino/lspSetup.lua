@@ -1,7 +1,7 @@
 local lfuncs = require("user.luafuncs")
 local module = {}
 
-local boardpkgs = {"esp32","arduino"}
+local boardpkgs = {"esp32","arduino", "esp32-bluepad32"}
 
 function module.load()
 
@@ -12,13 +12,24 @@ function module.load()
         file:close()
     end
 
-
-    vim.lsp.config("clangd", {
-        cmd = {
+    
+    local cmdstuf = {}
+    if boardConf == "esp32-bluepad32" then
+        cmdstuf = {
             "clangd",
             "--background-index",
-            "--query-driver="..vim.fn.expand("~").."/.arduino15/packages/"..boardConf.."/tools/**/bin/*"
-        },
+            "--query-driver=" .. vim.fn.expand("~") .. "/.arduino15/packages/esp32/tools/xtensa-*-elf-gcc/*/bin/*"
+            -- To get the query driver for bluepad check whatever is autoselected in a generated compile commands
+        }
+    else
+        cmdstuf = {
+            "clangd",
+            "--background-index",
+        }
+    end
+
+    vim.lsp.config("clangd", {
+        cmd = cmdstuf,
         filetypes = { "c", "cpp", "objc", "objcpp", "arduino" },
 
         root_dir = vim.fs.root(0,{".clangd", "compile_commands.json", ".git"})

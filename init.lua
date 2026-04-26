@@ -37,8 +37,8 @@ vim.cmd [[set clipboard +=unnamed]]
 vim.cmd [[set clipboard +=unnamedplus]]
 vim.o.signcolumn = "yes"
 
-
-vim.cmd [[set keymodel=startsel,stopsel]]
+-- outside application shift arrow key selection
+--vim.cmd [[set keymodel=startsel,stopsel]]
 ---- In-Editor shortcuts
 -- General file shortcuts
 
