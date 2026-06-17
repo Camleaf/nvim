@@ -2,10 +2,12 @@ return {
     {
       'neovim/nvim-lspconfig',
       dependencies = { 'saghen/blink.cmp' },
+      version = "2.10",
     },
     {
         "mason-org/mason.nvim",
-        opts = {}
+        opts = {},
+        version = "2.*.*"
     },
     {
         "mason-org/mason-lspconfig.nvim",

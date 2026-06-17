@@ -21,7 +21,8 @@ function module.load()
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false
-        }
+        },
+        install_dir = vim.fn.expand("~")..'/.config/nvim/installed/parsers'
 
     })
     -- treesitter parsers install.
