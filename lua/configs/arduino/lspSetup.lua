@@ -8,11 +8,10 @@ function module.load()
     local boardConf = "esp32" -- esp32 by default
     local file = io.open(vim.fn.expand("~").."/.config/nvim/lua/configs/arduino/activeboard", "r")
     if file ~= nil then
-        boardConf = file:read("*a")
+        boardConf = file:read("*l")
         file:close()
     end
-
-    
+ 
     local cmdstuf = {}
     if boardConf == "esp32-bluepad32" then
         cmdstuf = {
@@ -25,6 +24,7 @@ function module.load()
         cmdstuf = {
             "clangd",
             "--background-index",
+            "--query-driver="..vim.fn.expand("~").."/.arduino15/packages/"..boardConf.."/tools/**/bin/*"
         }
     end
 
