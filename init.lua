@@ -65,7 +65,9 @@ vim.diagnostic.config({
     },
     severity_sort = true,
 })
-
+vim.keymap.set('n', 'tt', function()
+  vim.diagnostic.open_float({ border = 'rounded' })
+end, { desc = "open diagnostic message" })
 
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 
