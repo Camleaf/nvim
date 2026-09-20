@@ -34,7 +34,7 @@ end
 
 function module.getLspNames()
     return {
-     "lua_ls", "cssls", "basedpyright", "ts_ls","html","tailwindcss",
+     "lua_ls", "cssls", "basedpyright", "vtsls","html","tailwindcss",
      "bashls", "jsonls"
     }
 end

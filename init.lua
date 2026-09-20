@@ -71,5 +71,7 @@ end, { desc = "open diagnostic message" })
 
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 
+
+
 print("Configuration \'"..CONFIG.."\' loaded")
 vim.cmd(":messages")

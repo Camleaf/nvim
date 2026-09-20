@@ -9,6 +9,20 @@ function module.load()
       filename = {},
       pattern = {},
     })
+
+    vim.lsp.config('vtsls', {
+      on_attach = function(client, buf)
+        client.server_capabilities.semanticTokensProvider = nil
+      end,
+    })
+
+    vim.lsp.config('tailwindcss', {
+      settings = {
+        tailwindCSS = {
+          colorDecorators = false,
+        },
+      },
+    })
 end
 
 
