@@ -1,5 +1,6 @@
 local module = {}
 
+local lfuncs = require("user.luafuncs")
 function module.load()
 
 
@@ -16,7 +17,7 @@ function module.load()
     --setup treesitter
     require('nvim-treesitter').setup({
       -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-        ensure_installed = require("configs."..CONFIG..".languages").getParserNames(),
+        ensure_installed = lfuncs.merge(require("configs."..CONFIG..".languages").getParserNames(),require("configs.global-langs").getParserNames()),
         auto_install = true,
         highlight = {
             enable = true,
@@ -27,11 +28,16 @@ function module.load()
     })
     -- treesitter parsers install.
 
-    require('nvim-treesitter').install(require("configs."..CONFIG..".languages").getParserNames()):wait(30000) -- wait max 5min
+    require('nvim-treesitter').install(
+        lfuncs.merge(
+            require("configs."..CONFIG..".languages").getParserNames(),
+            require("configs.global-langs").getParserNames()
+        )
+    ):wait(30000) -- wait max 5min
 
     -- treesitter activation for each file
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = require("configs."..CONFIG..".languages").getFileTypes(),
+      pattern = lfuncs.merge(require("configs."..CONFIG..".languages").getFileTypes(),require("configs.global-langs").getFileTypes()),
       callback = function()
           vim.treesitter.start() 
       end,

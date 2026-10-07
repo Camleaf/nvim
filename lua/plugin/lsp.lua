@@ -1,3 +1,6 @@
+
+local lfuncs = require("user.luafuncs")
+
 return {
     {
       'neovim/nvim-lspconfig',
@@ -12,8 +15,8 @@ return {
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = require("configs."..CONFIG..".languages").getLspNames(),
-            automatic_enable = require("configs."..CONFIG..".languages").getLspNames()
+            ensure_installed = lfuncs.merge(require("configs."..CONFIG..".languages").getLspNames(),require("configs.global-langs").getLspNames()),
+            automatic_enable = lfuncs.merge(require("configs."..CONFIG..".languages").getLspNames(),require("configs.global-langs").getLspNames())
 
         },
     }, 
