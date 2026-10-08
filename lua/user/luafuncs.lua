@@ -1,7 +1,12 @@
 local m = {}
 
 
-m.merge = function(t1, t2) for k, v in pairs(t2) do t1[k] = v end return t1 end
+m.merge = function(t1, t2)
+  local out = {}
+  for _, v in ipairs(t1) do out[#out + 1] = v end
+  for _, v in ipairs(t2) do out[#out + 1] = v end
+  return out
+end
 
 function m.contains(tab, val)
     for index, value in ipairs(tab) do

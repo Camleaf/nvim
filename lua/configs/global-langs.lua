@@ -7,7 +7,6 @@ function module.getParserNames()
         "lua",
         "markdown",
         "yaml",
-        "qmljs"
     }
 end
 
@@ -17,7 +16,7 @@ function module.getFileTypes()
         "lua",
         "markdown",
         "yaml",
-        "qml"
+        "quickshell"
     }
 end
 

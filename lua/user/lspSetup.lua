@@ -43,6 +43,11 @@ function module.load()
       end,
     })
     
+    vim.lsp.config("qmlls", {
+        cmd = {"qmlls6"},
+        root_dir=vim.fs.root(0,{"shell.qml",".qmlls.ini",".git"})
+    })
+
 
     require("configs."..CONFIG..".lspSetup").load()
 end
